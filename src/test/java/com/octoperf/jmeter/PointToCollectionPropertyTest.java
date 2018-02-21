@@ -1,0 +1,31 @@
+package com.octoperf.jmeter;
+
+import com.octoperf.jmeter.model.ThreadGroupPoint;
+import org.apache.jmeter.testelement.property.CollectionProperty;
+import org.apache.jmeter.testelement.property.LongProperty;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+/**
+ * Tests {@link PointToCollectionProperty}.
+ *
+ * @author Gérald Pereira
+ */
+public class PointToCollectionPropertyTest {
+
+  private PointToCollectionProperty toCollection;
+
+  @Before
+  public void before() {
+    toCollection = new PointToCollectionProperty();
+  }
+
+  @Test
+  public void shouldConvertToMap() {
+    final CollectionProperty collection = toCollection.apply(new ThreadGroupPoint(1000L, 10L));
+    assertEquals(new LongProperty("timeInMs", 1000L), collection.get(0));
+    assertEquals(new LongProperty("threadsCount", 10L), collection.get(1));
+  }
+}
