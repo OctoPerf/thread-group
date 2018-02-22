@@ -14,26 +14,6 @@
     <orderEntry type="library" name="Maven: kg.apc:jmeter-plugins-casutg:2.5" level="project" />
     <orderEntry type="library" name="Maven: kg.apc:jmeter-plugins-cmn-jmeter:0.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.jmeter:jorphan:2.13" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.jmeter:ApacheJMeter_core:2.13" level="project" />
-    <orderEntry type="library" name="Maven: kg.apc:jmeter-plugins-charts:0.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.16.20" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:guava:24.0-jre" level="project" />
-    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:1.3.9" level="project" />
-    <orderEntry type="library" name="Maven: org.checkerframework:checker-compat-qual:2.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.1.3" level="project" />
-    <orderEntry type="library" name="Maven: com.google.j2objc:j2objc-annotations:1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.14" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.google.guava:guava-testlib:24.0-jre" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-core:2.15.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy:1.7.9" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy-agent:1.7.9" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:2.6" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: nl.jqno.equalsverifier:equalsverifier:2.4.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: kg.apc:jmeter-plugins-emulators:0.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apache.jmeter:ApacheJMeter_tcp:2.13" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apache.jmeter:ApacheJMeter_components:2.13" level="project" />
     <orderEntry type="library" name="Maven: bsf:bsf:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: avalon-framework:avalon-framework:4.1.4" level="project" />
     <orderEntry type="library" name="Maven: org.beanshell:bsh:2.0b5" level="project" />
@@ -139,5 +119,22 @@
     <orderEntry type="library" name="Maven: com.fifesoft:rsyntaxtextarea:2.5.6" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.10" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-nop:1.7.10" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.jmeter:ApacheJMeter_core:2.13" level="project" />
+    <orderEntry type="library" name="Maven: kg.apc:jmeter-plugins-charts:0.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.16.20" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:24.0-jre" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:1.3.9" level="project" />
+    <orderEntry type="library" name="Maven: org.checkerframework:checker-compat-qual:2.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.1.3" level="project" />
+    <orderEntry type="library" name="Maven: com.google.j2objc:j2objc-annotations:1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.14" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.google.guava:guava-testlib:24.0-jre" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-core:2.15.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy:1.7.9" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy-agent:1.7.9" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:2.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: nl.jqno.equalsverifier:equalsverifier:2.4.3" level="project" />
   </component>
 </module>

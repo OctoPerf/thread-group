@@ -18,17 +18,28 @@
         </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <mainClass>fully.qualified.MainClass</mainClass>
-            </manifest>
-          </archive>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-        </configuration>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <artifactSet>
+                <includes>
+                  <include>kg.apc:jmeter-plugins-casutg</include>
+                  <include>com.google.guava:guava</include>
+                </includes>
+                <excludes>
+                  <exclude>org.apache.jmeter:ApacheJMeter_core</exclude>
+                </excludes>
+              </artifactSet>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
@@ -74,13 +85,6 @@
       <version>2.4.3</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>kg.apc</groupId>
-      <artifactId>jmeter-plugins-emulators</artifactId>
-      <version>0.2</version>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
-
 
 </project>
