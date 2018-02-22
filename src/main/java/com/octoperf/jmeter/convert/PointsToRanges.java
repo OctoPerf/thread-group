@@ -1,4 +1,4 @@
-package com.octoperf.jmeter;
+package com.octoperf.jmeter.convert;
 
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import com.octoperf.jmeter.model.ThreadRange;

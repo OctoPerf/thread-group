@@ -1,7 +1,6 @@
-package com.octoperf.jmeter;
+package com.octoperf.jmeter.convert;
 
 import com.octoperf.jmeter.model.ThreadGroupPoint;
-import com.octoperf.jmeter.model.ThreadRange;
 import org.apache.jmeter.testelement.property.CollectionProperty;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,15 +9,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.List;
-import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import static com.google.common.collect.ImmutableList.of;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.anyList;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**

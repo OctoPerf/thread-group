@@ -1,5 +1,6 @@
-package com.octoperf.jmeter;
+package com.octoperf.jmeter.convert;
 
+import com.octoperf.jmeter.convert.CollectionPropertyToPoint;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import org.apache.jmeter.testelement.property.CollectionProperty;
 import org.apache.jmeter.testelement.property.JMeterProperty;

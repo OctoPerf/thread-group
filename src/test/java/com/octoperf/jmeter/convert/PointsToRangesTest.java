@@ -1,10 +1,8 @@
-package com.octoperf.jmeter;
+package com.octoperf.jmeter.convert;
 
+import com.octoperf.jmeter.convert.PointsToRanges;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import com.octoperf.jmeter.model.ThreadRange;
-import com.octoperf.jmeter.model.ThreadRangeTest;
-import org.apache.jmeter.testelement.property.CollectionProperty;
-import org.apache.jmeter.testelement.property.LongProperty;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

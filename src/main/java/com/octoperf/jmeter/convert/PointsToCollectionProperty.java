@@ -1,4 +1,4 @@
-package com.octoperf.jmeter;
+package com.octoperf.jmeter.convert;
 
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import lombok.AllArgsConstructor;
@@ -21,7 +21,7 @@ final class PointsToCollectionProperty implements Function<List<ThreadGroupPoint
   Function<ThreadGroupPoint, CollectionProperty> toCollection;
 
   public CollectionProperty apply(final List<ThreadGroupPoint> list) {
-    return new CollectionProperty(OctoPerfThreadGroup.POINTS, list.stream().map(toCollection).collect(Collectors.toList()));
+    return new CollectionProperty(ThreadGroupPoint.POINTS, list.stream().map(toCollection).collect(Collectors.toList()));
   }
 
 }

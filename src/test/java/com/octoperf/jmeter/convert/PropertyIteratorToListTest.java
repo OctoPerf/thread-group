@@ -1,6 +1,7 @@
-package com.octoperf.jmeter;
+package com.octoperf.jmeter.convert;
 
 import com.google.common.collect.ImmutableList;
+import com.octoperf.jmeter.convert.PropertyIteratorToList;
 import org.apache.jmeter.testelement.property.CollectionProperty;
 import org.apache.jmeter.testelement.property.JMeterProperty;
 import org.apache.jmeter.testelement.property.LongProperty;
@@ -8,9 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.assertSame;
 

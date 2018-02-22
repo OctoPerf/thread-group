@@ -1,14 +1,12 @@
-package com.octoperf.jmeter;
+package com.octoperf.jmeter.convert;
 
 import com.google.common.collect.ImmutableList;
-import com.octoperf.jmeter.model.ThreadGroupPoint;
-import com.octoperf.jmeter.model.ThreadRange;
+import com.octoperf.jmeter.convert.PropertyIteratorToMap;
 import org.apache.jmeter.testelement.property.*;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;

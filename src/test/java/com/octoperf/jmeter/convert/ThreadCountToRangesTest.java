@@ -1,6 +1,8 @@
-package com.octoperf.jmeter;
+package com.octoperf.jmeter.convert;
 
 import com.google.common.collect.ImmutableList;
+import com.octoperf.jmeter.convert.NormalizePoints;
+import com.octoperf.jmeter.convert.ThreadCountToRanges;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import com.octoperf.jmeter.model.ThreadRange;
 import org.junit.Before;

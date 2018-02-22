@@ -1,4 +1,4 @@
-package com.octoperf.jmeter;
+package com.octoperf.jmeter.convert;
 
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import lombok.AllArgsConstructor;
@@ -33,7 +33,9 @@ final class CollectionPropertyToPoint implements Function<CollectionProperty, Th
   Function<PropertyIterator, Map<String, JMeterProperty>> toMap;
 
   public ThreadGroupPoint apply(final CollectionProperty collectionProperty) {
+    System.out.println("collection " + collectionProperty);
     final Map<String, JMeterProperty> properties = toMap.apply(collectionProperty.iterator());
+    System.out.println("properties " + properties.keySet());
     return new ThreadGroupPoint(properties.get(ThreadGroupPoint.TIME_IN_MS).getLongValue(), properties.get(ThreadGroupPoint.THREADS_COUNT).getLongValue());
   }
 

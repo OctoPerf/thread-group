@@ -1,11 +1,12 @@
 package com.octoperf.jmeter;
 
+import com.octoperf.jmeter.convert.*;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import com.octoperf.jmeter.model.ThreadRange;
 import kg.apc.jmeter.threads.AbstractSimpleThreadGroup;
 import lombok.AccessLevel;
-import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import org.apache.jmeter.engine.StandardJMeterEngine;
 import org.apache.jmeter.testelement.TestStateListener;
 import org.apache.jmeter.testelement.property.CollectionProperty;
 import org.apache.jmeter.threads.JMeterThread;
@@ -13,21 +14,16 @@ import org.apache.jmeter.threads.JMeterThread;
 import java.io.Serializable;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.function.Function;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class OctoPerfThreadGroup extends AbstractSimpleThreadGroup implements Serializable, TestStateListener {
 
-  public static final String POINTS = "points";
-
-  Function<CollectionProperty, List<ThreadGroupPoint>> toPoints;
-  Function<List<ThreadGroupPoint>, List<ThreadRange>> toRanges;
+  final ConvertService convert;
   ListIterator<ThreadRange> ranges;
 
   public OctoPerfThreadGroup() {
     super();
-    toPoints = new CollectionPropertyToPoints(new PropertyIteratorToList(), new CollectionPropertyToPoint(new PropertyIteratorToMap()));
-    toRanges = new PointsToRanges(new ThreadCountToRanges());
+    convert = new ConvertService();
   }
 
   @Override
@@ -41,6 +37,11 @@ public class OctoPerfThreadGroup extends AbstractSimpleThreadGroup implements Se
   @Override
   public int getNumThreads() {
     return getThreadRanges().size();
+  }
+
+  @Override
+  public JMeterThread addNewThread(int delay, StandardJMeterEngine engine) {
+    return null;
   }
 
   @Override
@@ -62,9 +63,15 @@ public class OctoPerfThreadGroup extends AbstractSimpleThreadGroup implements Se
     testEnded();
   }
 
+  public CollectionProperty getCollectionProperty() {
+    return (CollectionProperty) getProperty(ThreadGroupPoint.POINTS);
+  }
+
+  public List<ThreadGroupPoint> getPoints() {
+    return convert.toPoints(getCollectionProperty());
+  }
+
   private List<ThreadRange> getThreadRanges() {
-    final CollectionProperty pointsCollection = (CollectionProperty) getProperty(POINTS);
-    final List<ThreadGroupPoint> points = toPoints.apply(pointsCollection);
-    return toRanges.apply(points);
+    return convert.toRanges(getPoints());
   }
 }

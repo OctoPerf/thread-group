@@ -11,6 +11,7 @@ import lombok.Value;
 @Value
 public final class ThreadGroupPoint {
 
+  public static final String POINTS = "points";
   public static final String TIME_IN_MS = "timeInMs";
   public static final String THREADS_COUNT = "threadsCount";
 

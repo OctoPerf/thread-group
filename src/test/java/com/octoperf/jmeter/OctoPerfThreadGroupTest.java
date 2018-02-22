@@ -1,5 +1,6 @@
 package com.octoperf.jmeter;
 
+import com.octoperf.jmeter.model.ThreadGroupPoint;
 import org.apache.jmeter.testelement.property.CollectionProperty;
 import org.apache.jmeter.testelement.property.LongProperty;
 import org.apache.jmeter.threads.JMeterThread;
@@ -37,7 +38,7 @@ public class OctoPerfThreadGroupTest {
   public void setUp() {
     final CollectionProperty firstPoint = new CollectionProperty("(0,10)", new ArrayList<>(of(new LongProperty(TIME_IN_MS, 0L), new LongProperty(THREADS_COUNT, 10L))));
     final CollectionProperty lastPoint = new CollectionProperty("(60000,10)", new ArrayList<>(of(new LongProperty(TIME_IN_MS, 60000L), new LongProperty(THREADS_COUNT, 10L))));
-    final CollectionProperty points = new CollectionProperty(OctoPerfThreadGroup.POINTS, new ArrayList<>(of(firstPoint, lastPoint)));
+    final CollectionProperty points = new CollectionProperty(ThreadGroupPoint.POINTS, new ArrayList<>(of(firstPoint, lastPoint)));
     instance = new OctoPerfThreadGroup();
     instance.setProperty(points);
   }

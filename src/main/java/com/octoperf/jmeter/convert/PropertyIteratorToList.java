@@ -1,4 +1,4 @@
-package com.octoperf.jmeter;
+package com.octoperf.jmeter.convert;
 
 import com.google.common.collect.ImmutableList;
 import org.apache.jmeter.testelement.property.JMeterProperty;
