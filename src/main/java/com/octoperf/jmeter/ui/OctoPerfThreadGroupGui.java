@@ -1,15 +1,14 @@
 package com.octoperf.jmeter.ui;
 
-import com.google.common.collect.ImmutableList;
 import com.octoperf.jmeter.OctoPerfThreadGroup;
 import com.octoperf.jmeter.convert.ConvertService;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
+import kg.apc.jmeter.JMeterPluginsUtils;
 import kg.apc.jmeter.gui.GuiBuilderHelper;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.apache.jmeter.gui.util.VerticalPanel;
 import org.apache.jmeter.testelement.TestElement;
-import org.apache.jmeter.testelement.property.CollectionProperty;
 import org.apache.jmeter.threads.gui.AbstractThreadGroupGui;
 
 import javax.swing.*;
@@ -35,7 +34,6 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
   }
 
   final void init() {
-//    JMeterPluginsUtils.addHelpLinkToPanel(this, "http://octoperf.com");
     final JPanel containerPanel = new VerticalPanel();
 
     configuration.addListener(this);
@@ -47,7 +45,7 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
 
   @Override
   public String getLabelResource() {
-    return this.getClass().getSimpleName();
+    return "OctoPerf Thread Group";
   }
 
   @Override
@@ -56,7 +54,6 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
     threadGroup.setPoints(POINTS);
     chart.refresh(threadGroup.getPoints());
     configuration.setPoints(threadGroup.getPoints());
-    System.out.println("createTestElement " + threadGroup);
     return threadGroup;
   }
 
@@ -65,7 +62,6 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
     final OctoPerfThreadGroup threadGroup = (OctoPerfThreadGroup) testElement;
     threadGroup.setPoints(configuration.getPoints());
     chart.refresh(threadGroup.getPoints());
-    System.out.println("modifyTestElement " + testElement);
   }
 
   @Override

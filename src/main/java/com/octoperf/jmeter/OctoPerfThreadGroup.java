@@ -3,10 +3,12 @@ package com.octoperf.jmeter;
 import com.octoperf.jmeter.convert.*;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import com.octoperf.jmeter.model.ThreadRange;
+import com.octoperf.jmeter.ui.OctoPerfThreadGroupGui;
 import kg.apc.jmeter.threads.AbstractSimpleThreadGroup;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.apache.jmeter.engine.StandardJMeterEngine;
+import org.apache.jmeter.testelement.TestElement;
 import org.apache.jmeter.testelement.TestStateListener;
 import org.apache.jmeter.testelement.property.CollectionProperty;
 import org.apache.jmeter.threads.JMeterThread;
@@ -24,6 +26,8 @@ public class OctoPerfThreadGroup extends AbstractSimpleThreadGroup implements Se
   public OctoPerfThreadGroup() {
     super();
     convert = new ConvertService();
+    super.setProperty(TestElement.GUI_CLASS, OctoPerfThreadGroupGui.class.getName());
+    super.setProperty(TestElement.COMMENTS, "https://octoperf.com");
   }
 
   @Override
