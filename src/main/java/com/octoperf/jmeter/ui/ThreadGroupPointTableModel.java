@@ -1,5 +1,6 @@
 package com.octoperf.jmeter.ui;
 
+import com.google.common.collect.ImmutableList;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -21,13 +22,24 @@ final class ThreadGroupPointTableModel extends AbstractTableModel {
   @Getter
   List<ThreadGroupPoint> points;
 
-  ThreadGroupPointTableModel(){
+  ThreadGroupPointTableModel() {
     points = new ArrayList<>();
   }
 
-  public void setPoints(final List<ThreadGroupPoint> points){
+  public void setPoints(final List<ThreadGroupPoint> points) {
     this.points.clear();
     this.points.addAll(points);
+  }
+
+  public void addPoint() {
+    final ThreadGroupPoint last = points.isEmpty() ? new ThreadGroupPoint(0, 0) : points.get(points.size() - 1);
+    points.add(new ThreadGroupPoint(last.getTimeInMs() * 2, last.getThreadsCount()));
+    fireTableDataChanged();
+  }
+
+  public void removePoint(int row) {
+    this.points.remove(row);
+    fireTableDataChanged();
   }
 
   @Override
@@ -64,7 +76,7 @@ final class ThreadGroupPointTableModel extends AbstractTableModel {
   }
 
   @Override
-  public boolean isCellEditable(int i, int i1) {
+  public boolean isCellEditable(int row, int col) {
     return true;
   }
 

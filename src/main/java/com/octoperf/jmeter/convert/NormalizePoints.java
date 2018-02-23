@@ -1,6 +1,5 @@
 package com.octoperf.jmeter.convert;
 
-import com.google.common.collect.ImmutableList;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 
 import java.util.Comparator;
@@ -11,7 +10,6 @@ import java.util.stream.Collectors;
 
 /**
  * Normalizes a list of ThreadGroupPoint:
- * - Adds a first point (0,0),
  * - Removes duplicate points (same time),
  * - Sorts the list.
  *
@@ -21,10 +19,8 @@ final class NormalizePoints implements Function<List<ThreadGroupPoint>, List<Thr
 
   @Override
   public List<ThreadGroupPoint> apply(final List<ThreadGroupPoint> threadGroupPoints) {
-    final ThreadGroupPoint first = new ThreadGroupPoint(0, 0);
-    final List<ThreadGroupPoint> allPoints = new ImmutableList.Builder<ThreadGroupPoint>().add(first).addAll(threadGroupPoints).build();
     final HashMap<Long, ThreadGroupPoint> map = new HashMap<>();
-    for (ThreadGroupPoint point : allPoints) {
+    for (ThreadGroupPoint point : threadGroupPoints) {
       map.merge(point.getTimeInMs(), point, (p1, p2) -> new ThreadGroupPoint(point.getTimeInMs(), Math.max(p1.getThreadsCount(), p2.getThreadsCount())));
     }
     return map.values()

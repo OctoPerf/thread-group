@@ -101,12 +101,12 @@ public class ThreadCountToRangesTest {
   @Test
   public void shouldComputeSimpleRangeValues() {
     final List<ThreadGroupPoint> points = ImmutableList.of(
-      new ThreadGroupPoint(0L, 10L),
+      new ThreadGroupPoint(30000L, 10L),
       new ThreadGroupPoint(90000L, 10L)
     );
-    assertEquals(new ThreadRange(0L, 90000L), toRanges.apply(1L, points).get(0));
-    assertEquals(new ThreadRange(0L, 90000L), toRanges.apply(5L, points).get(0));
-    assertEquals(new ThreadRange(0L, 90000L), toRanges.apply(10L, points).get(0));
+    assertEquals(new ThreadRange(30000L, 90000L), toRanges.apply(1L, points).get(0));
+    assertEquals(new ThreadRange(30000L, 90000L), toRanges.apply(5L, points).get(0));
+    assertEquals(new ThreadRange(30000L, 90000L), toRanges.apply(10L, points).get(0));
   }
 
 

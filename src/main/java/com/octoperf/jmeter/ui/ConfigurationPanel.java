@@ -1,13 +1,10 @@
 package com.octoperf.jmeter.ui;
 
+import com.octoperf.jmeter.convert.ConvertService;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
-import kg.apc.jmeter.JMeterPluginsUtils;
-import kg.apc.jmeter.gui.ButtonPanelAddCopyRemove;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
-import org.apache.jmeter.gui.util.PowerTableModel;
-import org.apache.jmeter.testelement.property.CollectionProperty;
 
 import javax.swing.*;
 import javax.swing.event.CellEditorListener;
@@ -23,17 +20,15 @@ import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 class ConfigurationPanel implements TableModelListener, CellEditorListener {
 
-//  static Long[] DEFAULT_VALUES = new Long[]{10000L, 10L};
-//  static String[] COLUMN_IDENTIFIERS = new String[]{"Time in milliseconds", "Thread count"};
-//  static Class[] COLUMN_CLASSES = new Class[]{Long.class, Long.class};
-
   @Getter
   JPanel panel;
   ThreadGroupPointTableModel tableModel;
   List<ConfigurationPanelListener> listeners;
+  ConvertService convert;
 
-  ConfigurationPanel() {
+  ConfigurationPanel(final ConvertService convert) {
     listeners = new ArrayList<>();
+    this.convert = convert;
 
     panel = new JPanel(new BorderLayout(5, 5));
     panel.setBorder(BorderFactory.createTitledBorder("Threads Schedule"));
@@ -50,8 +45,8 @@ class ConfigurationPanel implements TableModelListener, CellEditorListener {
     final JScrollPane scroll = new JScrollPane(table);
     scroll.setPreferredSize(scroll.getMinimumSize());
     panel.add(scroll, BorderLayout.CENTER);
-//    final ButtonPanelAddCopyRemove buttons = new ButtonPanelAddCopyRemove(table, tableModel, DEFAULT_VALUES);
-//    panel.add(buttons, BorderLayout.SOUTH);
+    final ButtonsPanel buttons = new ButtonsPanel(table, tableModel);
+    panel.add(buttons, BorderLayout.SOUTH);
   }
 
   public void setPoints(final List<ThreadGroupPoint> points) {
@@ -64,24 +59,26 @@ class ConfigurationPanel implements TableModelListener, CellEditorListener {
 
   @Override
   public void tableChanged(TableModelEvent event) {
-    notifyChange();
+    modelChanged();
   }
 
   @Override
   public void editingStopped(ChangeEvent changeEvent) {
-    notifyChange();
+    modelChanged();
   }
 
   @Override
   public void editingCanceled(ChangeEvent changeEvent) {
-    notifyChange();
+    modelChanged();
   }
 
   public void addListener(final ConfigurationPanelListener listener) {
     this.listeners.add(listener);
   }
 
-  private void notifyChange() {
-    listeners.forEach(listener -> listener.configurationChanged(tableModel.getPoints()));
+  private void modelChanged() {
+    final List<ThreadGroupPoint> normalized = this.convert.normalize(tableModel.getPoints());
+    tableModel.setPoints(normalized);
+    listeners.forEach(listener -> listener.configurationChanged(normalized));
   }
 }

@@ -23,11 +23,6 @@ public class NormalizePointsTest {
   }
 
   @Test
-  public void shouldAddZero() {
-    assertEquals(of(new ThreadGroupPoint(0L, 0L)), normalizePoints.apply(of()));
-  }
-
-  @Test
   public void shouldSortPoints() {
     assertEquals(of(new ThreadGroupPoint(0L, 0L), new ThreadGroupPoint(1000L, 0L)), normalizePoints.apply(of(new ThreadGroupPoint(1000L, 0L), new ThreadGroupPoint(0L, 0L))));
   }

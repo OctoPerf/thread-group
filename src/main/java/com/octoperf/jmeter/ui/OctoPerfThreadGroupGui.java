@@ -30,7 +30,7 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
   public OctoPerfThreadGroupGui() {
     this.convert = new ConvertService();
     this.chart = new LineChart();
-    this.configuration = new ConfigurationPanel();
+    this.configuration = new ConfigurationPanel(this.convert);
     init();
   }
 
@@ -70,6 +70,6 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
 
   @Override
   public void configurationChanged(final List<ThreadGroupPoint> points) {
-    chart.refresh(convert.toPoints(convert.toCollection(points)));
+    chart.refresh(points);
   }
 }

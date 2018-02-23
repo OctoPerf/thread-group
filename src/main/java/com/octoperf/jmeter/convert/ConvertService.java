@@ -15,15 +15,16 @@ public final class ConvertService {
   Function<CollectionProperty, List<ThreadGroupPoint>> toPoints;
   Function<List<ThreadGroupPoint>, List<ThreadRange>> toRanges;
   Function<List<ThreadGroupPoint>, CollectionProperty> toCollection;
+  Function<List<ThreadGroupPoint>, List<ThreadGroupPoint>> normalize;
 
   public ConvertService() {
     this.toPoints = new CollectionPropertyToPoints(new PropertyIteratorToList(), new CollectionPropertyToPoint(new PropertyIteratorToMap()));
     this.toRanges = new PointsToRanges(new ThreadCountToRanges());
     this.toCollection = new PointsToCollectionProperty(new PointToCollectionProperty());
+    this.normalize = new NormalizePoints();
   }
 
   public List<ThreadGroupPoint> toPoints(final CollectionProperty collectionProperty) {
-    // TODO Normalize
     return toPoints.apply(collectionProperty);
   }
 
@@ -32,10 +33,15 @@ public final class ConvertService {
   }
 
   public CollectionProperty toCollection(final List<ThreadGroupPoint> points) {
-    // TODO Normalize
     return toCollection.apply(points);
   }
 
+  public List<ThreadGroupPoint> normalize(final List<ThreadGroupPoint> points){
+    return this.normalize.apply(points);
+  }
+
   // TODO Normalize
+  // TODO First row not editable ?
+  // TODO Normalize on edit table
 }
 
