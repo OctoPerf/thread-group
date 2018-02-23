@@ -7,6 +7,7 @@ import kg.apc.charting.GraphPanelChart;
 import kg.apc.charting.rows.GraphRowSimple;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.awt.*;
@@ -16,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 class LineChart {
 
-  @Getter
+  @Getter(AccessLevel.PACKAGE)
   GraphPanelChart chart;
 
   LineChart() {

@@ -3,18 +3,31 @@ package com.octoperf.jmeter.convert;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import com.octoperf.jmeter.model.ThreadRange;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.NonNull;
 import lombok.experimental.FieldDefaults;
 import org.apache.jmeter.testelement.property.CollectionProperty;
 
 import java.util.List;
 import java.util.function.Function;
 
+
+/**
+ * Handles conversions from/to list of ThreadGroupPoint and CollectionProperty
+ *
+ * @author Gérald Pereira
+ */
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
 public final class ConvertService {
 
+  @NonNull
   Function<CollectionProperty, List<ThreadGroupPoint>> toPoints;
+  @NonNull
   Function<List<ThreadGroupPoint>, List<ThreadRange>> toRanges;
+  @NonNull
   Function<List<ThreadGroupPoint>, CollectionProperty> toCollection;
+  @NonNull
   Function<List<ThreadGroupPoint>, List<ThreadGroupPoint>> normalize;
 
   public ConvertService() {
@@ -40,8 +53,5 @@ public final class ConvertService {
     return this.normalize.apply(points);
   }
 
-  // TODO Normalize
-  // TODO First row not editable ?
-  // TODO Normalize on edit table
 }
 
