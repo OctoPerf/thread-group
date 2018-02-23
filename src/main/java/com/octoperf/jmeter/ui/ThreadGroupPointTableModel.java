@@ -1,11 +1,8 @@
 package com.octoperf.jmeter.ui;
 
-import com.google.common.collect.ImmutableList;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.experimental.FieldDefaults;
 
 import javax.swing.table.AbstractTableModel;
@@ -33,7 +30,7 @@ final class ThreadGroupPointTableModel extends AbstractTableModel {
 
   public void addPoint() {
     final ThreadGroupPoint last = points.isEmpty() ? new ThreadGroupPoint(0, 0) : points.get(points.size() - 1);
-    points.add(new ThreadGroupPoint(last.getTimeInMs() * 2, last.getThreadsCount()));
+    points.add(new ThreadGroupPoint(last.getTimeInMs() + 30000, last.getThreadsCount()));
     fireTableDataChanged();
   }
 

@@ -16,12 +16,9 @@ final class AddPointAction
 
   public void actionPerformed(ActionEvent e) {
     if (table.isEditing()) {
-      TableCellEditor cellEditor = table.getCellEditor(table.getEditingRow(), table.getEditingColumn());
+      final TableCellEditor cellEditor = table.getCellEditor(table.getEditingRow(), table.getEditingColumn());
       cellEditor.stopCellEditing();
     }
     tableModel.addPoint();
-    // Highlight (select) the appropriate row.
-    int rowToSelect = tableModel.getRowCount() - 1;
-    table.setRowSelectionInterval(rowToSelect, rowToSelect);
   }
 }

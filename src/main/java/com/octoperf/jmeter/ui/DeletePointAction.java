@@ -16,12 +16,9 @@ final class DeletePointAction
 
   public void actionPerformed(ActionEvent e) {
     if (table.isEditing()) {
-      TableCellEditor cellEditor = table.getCellEditor(table.getEditingRow(), table.getEditingColumn());
+      final TableCellEditor cellEditor = table.getCellEditor(table.getEditingRow(), table.getEditingColumn());
       cellEditor.cancelCellEditing();
     }
-
-    int rowSelected = table.getSelectedRow();
-    tableModel.removePoint(rowSelected);
-    table.setRowSelectionInterval(rowSelected, rowSelected);
+    tableModel.removePoint(table.getSelectedRow());
   }
 }
