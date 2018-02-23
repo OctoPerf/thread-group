@@ -1,9 +1,11 @@
 package com.octoperf.jmeter.ui;
 
-import org.apache.jmeter.testelement.property.CollectionProperty;
+import com.octoperf.jmeter.model.ThreadGroupPoint;
+
+import java.util.List;
 
 interface ConfigurationPanelListener {
 
-  void configurationChanged(CollectionProperty points);
+  void configurationChanged(List<ThreadGroupPoint> points);
 
 }

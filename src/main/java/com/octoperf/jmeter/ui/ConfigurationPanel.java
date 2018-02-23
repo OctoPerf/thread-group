@@ -23,13 +23,13 @@ import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 class ConfigurationPanel implements TableModelListener, CellEditorListener {
 
-  static Long[] DEFAULT_VALUES = new Long[]{10000L, 10L};
-  static String[] COLUMN_IDENTIFIERS = new String[]{"Time in milliseconds", "Thread count"};
-  static Class[] COLUMN_CLASSES = new Class[]{Long.class, Long.class};
+//  static Long[] DEFAULT_VALUES = new Long[]{10000L, 10L};
+//  static String[] COLUMN_IDENTIFIERS = new String[]{"Time in milliseconds", "Thread count"};
+//  static Class[] COLUMN_CLASSES = new Class[]{Long.class, Long.class};
 
   @Getter
   JPanel panel;
-  PowerTableModel tableModel;
+  ThreadGroupPointTableModel tableModel;
   List<ConfigurationPanelListener> listeners;
 
   ConfigurationPanel() {
@@ -41,7 +41,7 @@ class ConfigurationPanel implements TableModelListener, CellEditorListener {
 
     final JTable table = new JTable();
     table.getDefaultEditor(String.class).addCellEditorListener(this);
-    tableModel = new PowerTableModel(COLUMN_IDENTIFIERS, COLUMN_CLASSES);
+    tableModel = new ThreadGroupPointTableModel();
     tableModel.addTableModelListener(this);
     table.setModel(tableModel);
     table.setSelectionMode(SINGLE_SELECTION);
@@ -50,16 +50,16 @@ class ConfigurationPanel implements TableModelListener, CellEditorListener {
     final JScrollPane scroll = new JScrollPane(table);
     scroll.setPreferredSize(scroll.getMinimumSize());
     panel.add(scroll, BorderLayout.CENTER);
-    final ButtonPanelAddCopyRemove buttons = new ButtonPanelAddCopyRemove(table, tableModel, DEFAULT_VALUES);
-    panel.add(buttons, BorderLayout.SOUTH);
+//    final ButtonPanelAddCopyRemove buttons = new ButtonPanelAddCopyRemove(table, tableModel, DEFAULT_VALUES);
+//    panel.add(buttons, BorderLayout.SOUTH);
   }
 
-  public CollectionProperty getCollectionProperty() {
-    return JMeterPluginsUtils.tableModelRowsToCollectionProperty(tableModel, ThreadGroupPoint.POINTS);
+  public void setPoints(final List<ThreadGroupPoint> points) {
+    tableModel.setPoints(points);
   }
 
-  public void setCollectionProperty(CollectionProperty collectionProperty) {
-    JMeterPluginsUtils.collectionPropertyToTableModelRows(collectionProperty, tableModel);
+  public List<ThreadGroupPoint> getPoints() {
+    return tableModel.getPoints();
   }
 
   @Override
@@ -82,9 +82,6 @@ class ConfigurationPanel implements TableModelListener, CellEditorListener {
   }
 
   private void notifyChange() {
-    listeners.forEach(listener -> {
-      final CollectionProperty points = JMeterPluginsUtils.tableModelRowsToCollectionProperty(tableModel, ThreadGroupPoint.POINTS);
-      listener.configurationChanged(points);
-    });
+    listeners.forEach(listener -> listener.configurationChanged(tableModel.getPoints()));
   }
 }

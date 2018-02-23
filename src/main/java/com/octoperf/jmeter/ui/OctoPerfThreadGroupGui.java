@@ -1,5 +1,6 @@
 package com.octoperf.jmeter.ui;
 
+import com.google.common.collect.ImmutableList;
 import com.octoperf.jmeter.OctoPerfThreadGroup;
 import com.octoperf.jmeter.convert.ConvertService;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
@@ -13,11 +14,14 @@ import org.apache.jmeter.threads.gui.AbstractThreadGroupGui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 import static com.google.common.collect.ImmutableList.of;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements ConfigurationPanelListener {
+
+  static List<ThreadGroupPoint> POINTS = of(new ThreadGroupPoint(0, 0), new ThreadGroupPoint(60000, 10));
 
   ConvertService convert;
   LineChart chart;
@@ -49,9 +53,9 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
   @Override
   public TestElement createTestElement() {
     final OctoPerfThreadGroup threadGroup = new OctoPerfThreadGroup();
-    threadGroup.setProperty(convert.toCollection(of(new ThreadGroupPoint(0, 0), new ThreadGroupPoint(60000, 10))));
+    threadGroup.setPoints(POINTS);
     chart.refresh(threadGroup.getPoints());
-    configuration.setCollectionProperty(threadGroup.getCollectionProperty());
+    configuration.setPoints(threadGroup.getPoints());
     System.out.println("createTestElement " + threadGroup);
     return threadGroup;
   }
@@ -59,14 +63,13 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
   @Override
   public void modifyTestElement(TestElement testElement) {
     final OctoPerfThreadGroup threadGroup = (OctoPerfThreadGroup) testElement;
-    threadGroup.setProperty(configuration.getCollectionProperty());
+    threadGroup.setPoints(configuration.getPoints());
     chart.refresh(threadGroup.getPoints());
-    configuration.setCollectionProperty(threadGroup.getCollectionProperty());
     System.out.println("modifyTestElement " + testElement);
   }
 
   @Override
-  public void configurationChanged(CollectionProperty collectionProperty) {
-    chart.refresh(convert.toPoints(collectionProperty));
+  public void configurationChanged(final List<ThreadGroupPoint> points) {
+    chart.refresh(convert.toPoints(convert.toCollection(points)));
   }
 }

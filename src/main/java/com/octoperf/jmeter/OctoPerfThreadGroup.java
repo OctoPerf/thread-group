@@ -63,12 +63,12 @@ public class OctoPerfThreadGroup extends AbstractSimpleThreadGroup implements Se
     testEnded();
   }
 
-  public CollectionProperty getCollectionProperty() {
-    return (CollectionProperty) getProperty(ThreadGroupPoint.POINTS);
+  public void setPoints(final List<ThreadGroupPoint> points) {
+    setProperty(convert.toCollection(points));
   }
 
   public List<ThreadGroupPoint> getPoints() {
-    return convert.toPoints(getCollectionProperty());
+    return convert.toPoints((CollectionProperty) getProperty(ThreadGroupPoint.POINTS));
   }
 
   private List<ThreadRange> getThreadRanges() {

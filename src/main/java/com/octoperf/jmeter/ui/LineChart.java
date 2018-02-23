@@ -1,6 +1,5 @@
 package com.octoperf.jmeter.ui;
 
-import com.google.common.collect.ImmutableList;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import kg.apc.charting.AbstractGraphRow;
 import kg.apc.charting.DateTimeRenderer;
@@ -12,7 +11,6 @@ import lombok.experimental.FieldDefaults;
 
 import java.awt.*;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -28,6 +26,7 @@ class LineChart {
     chart.setYAxisLabel("Number of active threads");
     chart.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
     chart.setxAxisLabelRenderer(new DateTimeRenderer(DateTimeRenderer.HHMMSS, 0));
+    chart.setForcedMinX(0);
   }
 
   public void refresh(final List<ThreadGroupPoint> points) {

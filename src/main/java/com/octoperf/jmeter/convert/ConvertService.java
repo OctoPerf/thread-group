@@ -23,6 +23,7 @@ public final class ConvertService {
   }
 
   public List<ThreadGroupPoint> toPoints(final CollectionProperty collectionProperty) {
+    // TODO Normalize
     return toPoints.apply(collectionProperty);
   }
 
@@ -31,7 +32,10 @@ public final class ConvertService {
   }
 
   public CollectionProperty toCollection(final List<ThreadGroupPoint> points) {
+    // TODO Normalize
     return toCollection.apply(points);
   }
+
+  // TODO Normalize
 }
 
