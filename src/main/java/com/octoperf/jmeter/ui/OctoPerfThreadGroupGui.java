@@ -65,6 +65,14 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
   }
 
   @Override
+  public void configure(TestElement testElement) {
+    super.configure(testElement);
+    final OctoPerfThreadGroup threadGroup = (OctoPerfThreadGroup) testElement;
+    chart.refresh(threadGroup.getPoints());
+    configuration.setPoints(threadGroup.getPoints());
+  }
+
+  @Override
   public void configurationChanged(final List<ThreadGroupPoint> points) {
     chart.refresh(points);
   }
