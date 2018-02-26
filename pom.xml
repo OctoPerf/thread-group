@@ -23,9 +23,6 @@
         <version>2.20.1</version>
         <configuration>
           <testFailureIgnore>true</testFailureIgnore>
-          <systemPropertyVariables>
-            <java.awt.headless>true</java.awt.headless>
-          </systemPropertyVariables>
         </configuration>
       </plugin>
       <plugin>
