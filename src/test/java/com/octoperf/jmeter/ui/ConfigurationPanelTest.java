@@ -37,7 +37,7 @@ public class ConfigurationPanelTest {
 
   @Before
   public void before() {
-    configuration = new ConfigurationPanel(new ConvertService());
+    configuration = new ConfigurationPanel();
   }
 
   @Test
