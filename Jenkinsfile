@@ -6,12 +6,12 @@ node {
     }
 
     stage ('Clean') {
-        mvn clean
+        sh 'make clean'
     }
 
     stage('Test Coverage') {
         try {
-            mvn org.jacoco:jacoco-maven-plugin:prepare-agent install
+            sh 'make maven.test-coverage'
         } finally {
             junit '**/target/surefire-reports/TEST-*.xml'
 
@@ -23,7 +23,7 @@ node {
 
     stage ('SonarQube Analysis') {
         withSonarQubeEnv('sonarqube') {
-            mvn sonar:sonar
+            sh 'make sonar'
         }
     }
 
