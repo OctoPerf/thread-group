@@ -4,12 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import javax.swing.*;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 /**
@@ -38,6 +37,6 @@ public class ButtonsPanelTest {
   public void shouldEnableDeleteButton() {
     when(selectionModel.isSelectionEmpty()).thenReturn(false);
     buttons.valueChanged(null);
-    assertEquals(true, buttons.getDeletePointButton().isEnabled());
+    assertTrue(buttons.getDeletePointButton().isEnabled());
   }
 }

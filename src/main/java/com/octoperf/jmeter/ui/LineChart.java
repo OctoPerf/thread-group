@@ -7,7 +7,6 @@ import kg.apc.charting.GraphPanelChart;
 import kg.apc.charting.rows.GraphRowSimple;
 import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.awt.*;

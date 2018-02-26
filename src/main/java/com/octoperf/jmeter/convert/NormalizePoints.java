@@ -20,7 +20,7 @@ final class NormalizePoints implements Function<List<ThreadGroupPoint>, List<Thr
   @Override
   public List<ThreadGroupPoint> apply(final List<ThreadGroupPoint> threadGroupPoints) {
     final HashMap<Long, ThreadGroupPoint> map = new HashMap<>();
-    for (ThreadGroupPoint point : threadGroupPoints) {
+    for (final ThreadGroupPoint point : threadGroupPoints) {
       map.merge(point.getTimeInMs(), point, (p1, p2) -> new ThreadGroupPoint(point.getTimeInMs(), Math.max(p1.getThreadsCount(), p2.getThreadsCount())));
     }
     return map.values()

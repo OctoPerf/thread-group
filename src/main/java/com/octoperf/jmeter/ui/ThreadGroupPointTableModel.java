@@ -12,13 +12,14 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 final class ThreadGroupPointTableModel extends AbstractTableModel {
 
-  static int COL_COUNT = 2;
-  static String[] COL_NAMES = new String[]{"Time in milliseconds", "Thread count"};
+  private static final int COL_COUNT = 2;
+  private static final String[] COL_NAMES = new String[]{"Time in milliseconds", "Thread count"};
 
   @Getter
   List<ThreadGroupPoint> points;
 
   ThreadGroupPointTableModel() {
+    super();
     points = new ArrayList<>();
   }
 

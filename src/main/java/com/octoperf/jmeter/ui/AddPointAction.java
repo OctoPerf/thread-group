@@ -3,7 +3,6 @@ package com.octoperf.jmeter.ui;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
-import lombok.Value;
 import lombok.experimental.FieldDefaults;
 
 import javax.swing.*;

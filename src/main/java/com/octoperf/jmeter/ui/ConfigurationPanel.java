@@ -26,9 +26,9 @@ class ConfigurationPanel implements TableModelListener, CellEditorListener {
   List<ConfigurationPanelListener> listeners;
   ConvertService convert;
 
-  ConfigurationPanel(final ConvertService convert) {
+  ConfigurationPanel() {
     listeners = new ArrayList<>();
-    this.convert = convert;
+    this.convert = new ConvertService();
 
     panel = new JPanel(new BorderLayout(5, 5));
     panel.setBorder(BorderFactory.createTitledBorder("Threads Schedule"));
@@ -46,7 +46,7 @@ class ConfigurationPanel implements TableModelListener, CellEditorListener {
     scroll.setPreferredSize(scroll.getMinimumSize());
     panel.add(scroll, BorderLayout.CENTER);
     final ButtonsPanel buttons = new ButtonsPanel(table, tableModel);
-    panel.add(buttons, BorderLayout.SOUTH);
+    panel.add(buttons.getButtonsPanel(), BorderLayout.SOUTH);
   }
 
   public void setPoints(final List<ThreadGroupPoint> points) {

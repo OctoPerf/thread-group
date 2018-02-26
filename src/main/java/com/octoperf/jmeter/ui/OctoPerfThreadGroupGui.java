@@ -3,7 +3,6 @@ package com.octoperf.jmeter.ui;
 import com.octoperf.jmeter.OctoPerfThreadGroup;
 import com.octoperf.jmeter.convert.ConvertService;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
-import kg.apc.jmeter.JMeterPluginsUtils;
 import kg.apc.jmeter.gui.GuiBuilderHelper;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -20,20 +19,18 @@ import static com.google.common.collect.ImmutableList.of;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements ConfigurationPanelListener {
 
-  static List<ThreadGroupPoint> POINTS = of(new ThreadGroupPoint(0, 0), new ThreadGroupPoint(60000, 10));
+  private static final List<ThreadGroupPoint> POINTS = of(new ThreadGroupPoint(0, 0), new ThreadGroupPoint(60000, 10));
 
-  ConvertService convert;
   LineChart chart;
   ConfigurationPanel configuration;
 
   public OctoPerfThreadGroupGui() {
-    this.convert = new ConvertService();
     this.chart = new LineChart();
-    this.configuration = new ConfigurationPanel(this.convert);
-    init();
+    this.configuration = new ConfigurationPanel();
+    initUi();
   }
 
-  final void init() {
+  final void initUi() {
     final JPanel containerPanel = new VerticalPanel();
 
     configuration.addListener(this);

@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class OctoPerfThreadGroup extends AbstractSimpleThreadGroup implements Serializable, TestStateListener {
+public class OctoPerfThreadGroup extends AbstractSimpleThreadGroup implements TestStateListener {
 
   final ConvertService convert;
   ListIterator<ThreadRange> ranges;

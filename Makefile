@@ -6,3 +6,6 @@ test-coverage:
 
 sonar:
 	mvn sonar:sonar
+
+package:
+	mvn clean compile package

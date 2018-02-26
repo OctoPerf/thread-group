@@ -15,26 +15,30 @@ import java.awt.*;
  * @author Gérald Pereira
  */
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class ButtonsPanel extends JPanel implements ListSelectionListener {
+public class ButtonsPanel implements ListSelectionListener {
 
   @Getter(AccessLevel.PACKAGE)
   JButton deletePointButton;
   JTable table;
+  @Getter(AccessLevel.PACKAGE)
+  JPanel buttonsPanel;
 
-  ButtonsPanel(JTable table, ThreadGroupPointTableModel tableModel) {
-    super();
+  ButtonsPanel(final JTable table, final ThreadGroupPointTableModel tableModel) {
+    buttonsPanel = new JPanel();
     this.table = table;
-    setLayout(new GridLayout(1, 2));
+    buttonsPanel.setLayout(new GridLayout(1, 2));
 
-    final JButton addPointButton = new JButton("Add Point");
-    deletePointButton = new JButton("Delete Point");
+    final JButton addPointButton = new JButton();
+    addPointButton.setText("Add Point");
+    deletePointButton = new JButton();
+    deletePointButton.setText("Delete Point");
 
     addPointButton.addActionListener(new AddPointAction(table, tableModel));
     deletePointButton.addActionListener(new DeletePointAction(table, tableModel));
     deletePointButton.setEnabled(false);
 
-    add(addPointButton);
-    add(deletePointButton);
+    buttonsPanel.add(addPointButton);
+    buttonsPanel.add(deletePointButton);
 
     table.getSelectionModel().addListSelectionListener(this);
   }
