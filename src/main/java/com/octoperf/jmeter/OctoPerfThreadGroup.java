@@ -6,7 +6,6 @@ import com.octoperf.jmeter.model.ThreadRange;
 import com.octoperf.jmeter.ui.OctoPerfThreadGroupGui;
 import kg.apc.jmeter.threads.AbstractSimpleThreadGroup;
 import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 import org.apache.jmeter.engine.StandardJMeterEngine;
 import org.apache.jmeter.testelement.TestElement;
