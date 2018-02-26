@@ -1,7 +1,6 @@
 package com.octoperf.jmeter.ui;
 
 import com.octoperf.jmeter.OctoPerfThreadGroup;
-import com.octoperf.jmeter.convert.ConvertService;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import kg.apc.jmeter.gui.GuiBuilderHelper;
 import lombok.AccessLevel;
@@ -21,7 +20,7 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
 
   private static final List<ThreadGroupPoint> POINTS = of(new ThreadGroupPoint(0, 0), new ThreadGroupPoint(60000, 10));
 
-  LineChart chart;
+  transient LineChart chart;
   ConfigurationPanel configuration;
 
   public OctoPerfThreadGroupGui() {

@@ -21,12 +21,12 @@ public class ButtonsPanel implements ListSelectionListener {
   JButton deletePointButton;
   JTable table;
   @Getter(AccessLevel.PACKAGE)
-  JPanel buttonsPanel;
+  JPanel panel;
 
   ButtonsPanel(final JTable table, final ThreadGroupPointTableModel tableModel) {
-    buttonsPanel = new JPanel();
+    panel = new JPanel();
     this.table = table;
-    buttonsPanel.setLayout(new GridLayout(1, 2));
+    panel.setLayout(new GridLayout(1, 2));
 
     final JButton addPointButton = new JButton();
     addPointButton.setText("Add Point");
@@ -37,8 +37,8 @@ public class ButtonsPanel implements ListSelectionListener {
     deletePointButton.addActionListener(new DeletePointAction(table, tableModel));
     deletePointButton.setEnabled(false);
 
-    buttonsPanel.add(addPointButton);
-    buttonsPanel.add(deletePointButton);
+    panel.add(addPointButton);
+    panel.add(deletePointButton);
 
     table.getSelectionModel().addListSelectionListener(this);
   }

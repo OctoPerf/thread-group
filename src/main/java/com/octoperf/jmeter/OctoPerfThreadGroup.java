@@ -1,11 +1,12 @@
 package com.octoperf.jmeter;
 
-import com.octoperf.jmeter.convert.*;
+import com.octoperf.jmeter.convert.ConvertService;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import com.octoperf.jmeter.model.ThreadRange;
 import com.octoperf.jmeter.ui.OctoPerfThreadGroupGui;
 import kg.apc.jmeter.threads.AbstractSimpleThreadGroup;
 import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 import org.apache.jmeter.engine.StandardJMeterEngine;
 import org.apache.jmeter.testelement.TestElement;
@@ -13,15 +14,17 @@ import org.apache.jmeter.testelement.TestStateListener;
 import org.apache.jmeter.testelement.property.CollectionProperty;
 import org.apache.jmeter.threads.JMeterThread;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.ListIterator;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@EqualsAndHashCode
 public class OctoPerfThreadGroup extends AbstractSimpleThreadGroup implements TestStateListener {
 
-  final ConvertService convert;
-  ListIterator<ThreadRange> ranges;
+  private static final long serialVersionUID = 42L;
+
+  final transient ConvertService convert;
+  transient ListIterator<ThreadRange> ranges;
 
   public OctoPerfThreadGroup() {
     super();
@@ -60,6 +63,7 @@ public class OctoPerfThreadGroup extends AbstractSimpleThreadGroup implements Te
 
   @Override
   public void testEnded() {
+    // Nothing to do
   }
 
   @Override

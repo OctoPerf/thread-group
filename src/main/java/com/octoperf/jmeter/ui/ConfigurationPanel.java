@@ -46,7 +46,7 @@ class ConfigurationPanel implements TableModelListener, CellEditorListener {
     scroll.setPreferredSize(scroll.getMinimumSize());
     panel.add(scroll, BorderLayout.CENTER);
     final ButtonsPanel buttons = new ButtonsPanel(table, tableModel);
-    panel.add(buttons.getButtonsPanel(), BorderLayout.SOUTH);
+    panel.add(buttons.getPanel(), BorderLayout.SOUTH);
   }
 
   public void setPoints(final List<ThreadGroupPoint> points) {
