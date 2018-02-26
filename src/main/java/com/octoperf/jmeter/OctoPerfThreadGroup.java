@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.ListIterator;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@EqualsAndHashCode
 public class OctoPerfThreadGroup extends AbstractSimpleThreadGroup implements TestStateListener {
 
   private static final long serialVersionUID = 42L;

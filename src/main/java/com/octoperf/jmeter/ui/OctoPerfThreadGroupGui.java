@@ -23,14 +23,14 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
   LineChart chart; //NOSONAR
   ConfigurationPanel configuration; //NOSONAR
 
-  public OctoPerfThreadGroupGui() {
+  OctoPerfThreadGroupGui() {
     super();
     this.chart = new LineChart();
     this.configuration = new ConfigurationPanel();
     initUi();
   }
 
-  final void initUi() {
+  private final void initUi() {
     final JPanel containerPanel = new VerticalPanel();
 
     configuration.addListener(this);
