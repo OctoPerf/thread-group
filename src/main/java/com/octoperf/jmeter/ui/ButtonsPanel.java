@@ -1,5 +1,6 @@
 package com.octoperf.jmeter.ui;
 
+import com.google.common.base.Preconditions;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
@@ -8,6 +9,8 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Contains add/delete point buttons. Handle the enabled state of the delete button depending on the table selection.
@@ -25,7 +28,7 @@ public class ButtonsPanel implements ListSelectionListener {
 
   ButtonsPanel(final JTable table, final ThreadGroupPointTableModel tableModel) {
     panel = new JPanel();
-    this.table = table;
+    this.table = checkNotNull(table);
     panel.setLayout(new GridLayout(1, 2));
 
     final JButton addPointButton = new JButton();

@@ -1,5 +1,6 @@
 package com.octoperf.jmeter.convert;
 
+import com.google.common.testing.NullPointerTester;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import com.octoperf.jmeter.model.ThreadRange;
 import org.apache.jmeter.testelement.property.CollectionProperty;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.function.Function;
 
 import static com.google.common.collect.ImmutableList.of;
+import static com.google.common.testing.NullPointerTester.Visibility.PACKAGE;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.verify;
@@ -44,6 +46,11 @@ public class ConvertServiceTest {
   @Before
   public void before() {
     convert = new ConvertService(toPoints, toRanges, toCollection, normalize);
+  }
+
+  @Test
+  public void shouldPassNullPointerTester() {
+    new NullPointerTester().testConstructors(ConvertService.class, PACKAGE);
   }
 
   @Test

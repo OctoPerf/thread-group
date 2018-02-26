@@ -1,6 +1,6 @@
 package com.octoperf.jmeter.convert;
 
-import com.octoperf.jmeter.convert.PointsToRanges;
+import com.google.common.testing.NullPointerTester;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import com.octoperf.jmeter.model.ThreadRange;
 import org.junit.Before;
@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.function.BiFunction;
 
 import static com.google.common.collect.ImmutableList.of;
+import static com.google.common.testing.NullPointerTester.Visibility.PACKAGE;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -37,6 +38,11 @@ public class PointsToRangesTest {
   public void before() {
     pointsToRanges = new PointsToRanges(threadCountToRanges);
     when(threadCountToRanges.apply(anyLong(), anyList())).thenReturn(of(new ThreadRange(0L, 5000L), new ThreadRange(5001L, 10000L)));
+  }
+
+  @Test
+  public void shouldPassNullPointerTester() {
+    new NullPointerTester().testConstructors(PointsToRanges.class, PACKAGE);
   }
 
   @Test

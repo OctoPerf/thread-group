@@ -1,6 +1,6 @@
 package com.octoperf.jmeter.convert;
 
-import com.octoperf.jmeter.convert.CollectionPropertyToPoints;
+import com.google.common.testing.NullPointerTester;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import org.apache.jmeter.testelement.property.CollectionProperty;
 import org.apache.jmeter.testelement.property.JMeterProperty;
@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.function.Function;
 
 import static com.google.common.collect.ImmutableList.of;
+import static com.google.common.testing.NullPointerTester.Visibility.PACKAGE;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
@@ -43,6 +44,12 @@ public class CollectionPropertyToPointsTest {
     when(toPoint.apply(any(CollectionProperty.class))).thenReturn(POINT);
     toPoints = new CollectionPropertyToPoints(toList, toPoint);
   }
+
+  @Test
+  public void shouldPassNullPointerTester() {
+    new NullPointerTester().testConstructors(CollectionPropertyToPoints.class, PACKAGE);
+  }
+
 
   @Test
   public void shouldConvertToPoints() {
