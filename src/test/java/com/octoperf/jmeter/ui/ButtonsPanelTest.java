@@ -10,6 +10,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import javax.swing.*;
 
 import static com.google.common.testing.NullPointerTester.Visibility.PACKAGE;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
@@ -45,5 +46,12 @@ public class ButtonsPanelTest {
     when(selectionModel.isSelectionEmpty()).thenReturn(false);
     buttons.valueChanged(null);
     assertTrue(buttons.getDeletePointButton().isEnabled());
+  }
+
+  @Test
+  public void shouldDisableDeleteButton() {
+    when(selectionModel.isSelectionEmpty()).thenReturn(true);
+    buttons.valueChanged(null);
+    assertFalse(buttons.getDeletePointButton().isEnabled());
   }
 }
