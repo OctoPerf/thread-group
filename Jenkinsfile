@@ -11,7 +11,7 @@ node {
 
     stage('Test Coverage') {
         try {
-            sh 'make maven.test-coverage'
+            sh 'make test-coverage'
         } finally {
             junit '**/target/surefire-reports/TEST-*.xml'
 

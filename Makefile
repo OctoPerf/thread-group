@@ -1,7 +1,7 @@
 clean:
 	mvn clean
 
-coverage:
+test-coverage:
 	mvn org.jacoco:jacoco-maven-plugin:prepare-agent install
 
 sonar:
