@@ -16,7 +16,7 @@ final class ThreadGroupPointTableModel extends AbstractTableModel {
   private static final String[] COL_NAMES = new String[]{"Time in milliseconds", "Thread count"};
 
   @Getter
-  List<ThreadGroupPoint> points;
+  List<ThreadGroupPoint> points; //NOSONAR
 
   ThreadGroupPointTableModel() {
     super();

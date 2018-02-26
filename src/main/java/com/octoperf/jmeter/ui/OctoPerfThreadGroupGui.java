@@ -20,10 +20,11 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
 
   private static final List<ThreadGroupPoint> POINTS = of(new ThreadGroupPoint(0, 0), new ThreadGroupPoint(60000, 10));
 
-  transient LineChart chart;
-  ConfigurationPanel configuration;
+  LineChart chart; //NOSONAR
+  ConfigurationPanel configuration; //NOSONAR
 
   public OctoPerfThreadGroupGui() {
+    super();
     this.chart = new LineChart();
     this.configuration = new ConfigurationPanel();
     initUi();

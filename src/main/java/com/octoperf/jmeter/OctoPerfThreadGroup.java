@@ -23,8 +23,8 @@ public class OctoPerfThreadGroup extends AbstractSimpleThreadGroup implements Te
 
   private static final long serialVersionUID = 42L;
 
-  final transient ConvertService convert;
-  transient ListIterator<ThreadRange> ranges;
+  final ConvertService convert; //NOSONAR
+  ListIterator<ThreadRange> ranges; //NOSONAR
 
   public OctoPerfThreadGroup() {
     super();
