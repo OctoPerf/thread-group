@@ -5,8 +5,11 @@ import com.octoperf.jmeter.model.ThreadGroupPoint;
 import kg.apc.jmeter.gui.GuiBuilderHelper;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
+import org.apache.jmeter.control.LoopController;
+import org.apache.jmeter.control.gui.LoopControlPanel;
 import org.apache.jmeter.gui.util.VerticalPanel;
 import org.apache.jmeter.testelement.TestElement;
+import org.apache.jmeter.threads.AbstractThreadGroup;
 import org.apache.jmeter.threads.gui.AbstractThreadGroupGui;
 
 import javax.swing.*;
@@ -14,6 +17,7 @@ import java.awt.*;
 import java.util.List;
 
 import static com.google.common.collect.ImmutableList.of;
+import static org.apache.jmeter.threads.AbstractThreadGroup.MAIN_CONTROLLER;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements ConfigurationPanelListener {
@@ -22,11 +26,13 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
 
   LineChart chart; //NOSONAR
   ConfigurationPanel configuration; //NOSONAR
+  LoopControlPanel loopPanel;
 
-  OctoPerfThreadGroupGui() {
+  public OctoPerfThreadGroupGui() {
     super();
     this.chart = new LineChart();
     this.configuration = new ConfigurationPanel();
+    this.loopPanel = new LoopControlPanel(false);
     initUi();
   }
 
@@ -38,6 +44,11 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
 
     containerPanel.add(GuiBuilderHelper.getComponentWithMargin(chart.getChart(), 2, 2, 0, 2), BorderLayout.CENTER);
     add(containerPanel, BorderLayout.CENTER);
+
+    final LoopController looper = (LoopController) loopPanel.createTestElement();
+    looper.setLoops(-1);
+    looper.setContinueForever(true);
+    loopPanel.configure(looper);
   }
 
   @Override
@@ -49,6 +60,7 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
   public TestElement createTestElement() {
     final OctoPerfThreadGroup threadGroup = new OctoPerfThreadGroup();
     threadGroup.setPoints(POINTS);
+    threadGroup.setSamplerController((LoopController) loopPanel.createTestElement());
     chart.refresh(threadGroup.getPoints());
     configuration.setPoints(threadGroup.getPoints());
     return threadGroup;
@@ -67,6 +79,9 @@ public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements Co
     final OctoPerfThreadGroup threadGroup = (OctoPerfThreadGroup) testElement;
     chart.refresh(threadGroup.getPoints());
     configuration.setPoints(threadGroup.getPoints());
+
+    TestElement controller = (TestElement) testElement.getProperty(MAIN_CONTROLLER).getObjectValue();
+    loopPanel.configure(controller);
   }
 
   @Override
