@@ -29,7 +29,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class ConvertServiceTest {
 
-  private static final List<ThreadGroupPoint> POINTS = of(new ThreadGroupPoint(1000L, 20));
+  private static final List<ThreadGroupPoint> POINTS = of(new ThreadGroupPoint(1000L, 20L));
   private static final CollectionProperty COLLECTION_PROPERTY = new CollectionProperty();
 
   @Mock

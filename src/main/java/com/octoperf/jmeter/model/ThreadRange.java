@@ -12,7 +12,7 @@ import lombok.Value;
 public final class ThreadRange {
 
   @NonNull
-  long start;
+  Long start;
   @NonNull
-  long end;
+  Long end;
 }

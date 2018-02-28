@@ -49,6 +49,6 @@ public class CollectionPropertyToPointTest {
 
   @Test
   public void shouldConvertToPoint() {
-    assertEquals(new ThreadGroupPoint(1000L, 20), toPoint.apply(new CollectionProperty()));
+    assertEquals(new ThreadGroupPoint(1000L, 20L), toPoint.apply(new CollectionProperty()));
   }
 }

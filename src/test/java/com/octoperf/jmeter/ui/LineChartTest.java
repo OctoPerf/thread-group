@@ -23,7 +23,7 @@ public class LineChartTest {
 
   @Test
   public void shouldRefresh() {
-    lineChart.refresh(of(new ThreadGroupPoint(0, 0)));
+    lineChart.refresh(of(new ThreadGroupPoint(0L, 0L)));
   }
 
   @Test

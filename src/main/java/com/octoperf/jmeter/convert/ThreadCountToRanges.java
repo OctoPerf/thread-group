@@ -18,7 +18,7 @@ final class ThreadCountToRanges implements BiFunction<Long, List<ThreadGroupPoin
   @Override
   public List<ThreadRange> apply(final Long threadCount, final List<ThreadGroupPoint> threadGroupPoints) {
     final ImmutableList.Builder<ThreadRange> rangesBuilder = new ImmutableList.Builder<>();
-    ThreadGroupPoint last = threadGroupPoints.isEmpty() ? new ThreadGroupPoint(0, 0) : threadGroupPoints.get(0);
+    ThreadGroupPoint last = threadGroupPoints.isEmpty() ? new ThreadGroupPoint(0L, 0L) : threadGroupPoints.get(0);
     Optional<Long> start = last.getThreadsCount() >= threadCount ? Optional.of(last.getTimeInMs()) : Optional.empty();
 
     for (final ThreadGroupPoint point : threadGroupPoints) {

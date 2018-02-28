@@ -71,7 +71,7 @@ public class OctoPerfThreadGroupTest {
 
   @Test
   public void shouldSetAndGetPoints() {
-    final List<ThreadGroupPoint> points = of(new ThreadGroupPoint(0, 0));
+    final List<ThreadGroupPoint> points = of(new ThreadGroupPoint(0L, 0L));
     instance.setPoints(points);
     assertEquals(points, instance.getPoints());
     assertNotSame(points, instance.getPoints());

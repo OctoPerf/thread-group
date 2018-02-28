@@ -22,7 +22,7 @@ import static org.apache.jmeter.threads.AbstractThreadGroup.MAIN_CONTROLLER;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class OctoPerfThreadGroupGui extends AbstractThreadGroupGui implements ConfigurationPanelListener {
 
-  private static final List<ThreadGroupPoint> POINTS = of(new ThreadGroupPoint(0, 0), new ThreadGroupPoint(60000, 10));
+  private static final List<ThreadGroupPoint> POINTS = of(new ThreadGroupPoint(0L, 0L), new ThreadGroupPoint(60000L, 10L));
 
   LineChart chart; //NOSONAR
   ConfigurationPanel configuration; //NOSONAR

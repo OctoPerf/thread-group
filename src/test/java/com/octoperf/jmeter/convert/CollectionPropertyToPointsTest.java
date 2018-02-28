@@ -28,7 +28,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class CollectionPropertyToPointsTest {
 
-  private static final ThreadGroupPoint POINT = new ThreadGroupPoint(1000L, 20);
+  private static final ThreadGroupPoint POINT = new ThreadGroupPoint(1000L, 20L);
 
   @Mock
   Function<PropertyIterator, List<JMeterProperty>> toList;

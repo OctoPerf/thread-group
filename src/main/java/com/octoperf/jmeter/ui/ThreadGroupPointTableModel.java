@@ -29,7 +29,7 @@ final class ThreadGroupPointTableModel extends AbstractTableModel {
   }
 
   public void addPoint() {
-    final ThreadGroupPoint last = points.isEmpty() ? new ThreadGroupPoint(0, 0) : points.get(points.size() - 1);
+    final ThreadGroupPoint last = points.isEmpty() ? new ThreadGroupPoint(0L, 0L) : points.get(points.size() - 1);
     points.add(new ThreadGroupPoint(last.getTimeInMs() + 30000, last.getThreadsCount()));
     fireTableDataChanged();
   }

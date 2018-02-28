@@ -47,7 +47,7 @@ public class ConfigurationPanelTest {
 
   @Test
   public void shouldSetAndGetPoints() {
-    final List<ThreadGroupPoint> points = of(new ThreadGroupPoint(0, 0));
+    final List<ThreadGroupPoint> points = of(new ThreadGroupPoint(0L, 0L));
     configuration.setPoints(points);
     assertEquals(points, configuration.getPoints());
   }

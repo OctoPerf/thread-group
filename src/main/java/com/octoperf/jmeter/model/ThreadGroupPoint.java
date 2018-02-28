@@ -16,7 +16,7 @@ public final class ThreadGroupPoint {
   public static final String THREADS_COUNT = "threadsCount";
 
   @NonNull
-  long timeInMs;
+  Long timeInMs;
   @NonNull
-  long threadsCount;
+  Long threadsCount;
 }
