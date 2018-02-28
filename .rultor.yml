@@ -8,4 +8,4 @@ release:
   script: |
     mvn versions:set "-DnewVersion=${tag}"
     git commit -am "${tag}"
-    mvn clean deploy -Pthread-group
+    mvn clean deploy -Pthread-group --settings ../settings.xml
