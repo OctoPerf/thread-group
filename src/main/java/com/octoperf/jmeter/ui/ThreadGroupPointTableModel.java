@@ -12,6 +12,8 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 final class ThreadGroupPointTableModel extends AbstractTableModel {
 
+  private static final long serialVersionUID = 3L;
+
   private static final int COL_COUNT = 2;
   private static final String[] COL_NAMES = new String[]{"Time in milliseconds", "Thread count"};
 
