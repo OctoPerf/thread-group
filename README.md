@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/OctoPerf/thread-group.svg?branch=master)](https://travis-ci.org/OctoPerf/thread-group)
 
-# OctoPerf Tread Group
+# OctoPerf Thread Group
 
 This JMeter ThreadGroup allows you to define the user load curve, point by point:
 
