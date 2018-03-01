@@ -32,30 +32,6 @@
           <testFailureIgnore>true</testFailureIgnore>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.1.0</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <artifactSet>
-                <includes>
-                  <include>kg.apc:jmeter-plugins-casutg</include>
-                  <include>com.google.guava:guava</include>
-                </includes>
-                <excludes>
-                  <exclude>org.apache.jmeter:ApacheJMeter_core</exclude>
-                </excludes>
-              </artifactSet>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
 
@@ -63,6 +39,7 @@
     <dependency>
       <groupId>kg.apc</groupId>
       <artifactId>jmeter-plugins-casutg</artifactId>
+      <scope>provided</scope>
       <version>2.5</version>
       <exclusions>
         <exclusion>
@@ -82,11 +59,6 @@
       <artifactId>lombok</artifactId>
       <version>1.16.20</version>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>24.0-jre</version>
     </dependency>
     <dependency>
       <groupId>com.google.guava</groupId>

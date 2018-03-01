@@ -1,10 +1,18 @@
 [![Build Status](https://travis-ci.org/OctoPerf/thread-group.svg?branch=master)](https://travis-ci.org/OctoPerf/thread-group)
 
-# OctoPerf Tread Group
+# OctoPerf Thread Group
+
+## Introduction
 
 This JMeter ThreadGroup allows you to define the user load curve, point by point:
 
 ![OctoPerf Thread Group](https://raw.githubusercontent.com/OctoPerf/thread-group/master/screenshot.png)
+
+## Requirements
+
+This plugin requires the [Custom Thread Groups](https://jmeter-plugins.org/?search=jpgc-casutg) plugin in order to work. Please install it first.
+
+## Edition
 
 Even though you cannot modify this option in the UI, the number of loops can be configured directly in the JMX (defaults to `forever` -1):
 
