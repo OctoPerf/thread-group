@@ -1,9 +1,9 @@
 package com.octoperf.jmeter.convert;
 
-import com.google.common.collect.ImmutableList;
 import com.octoperf.jmeter.model.ThreadGroupPoint;
 import com.octoperf.jmeter.model.ThreadRange;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BiFunction;
@@ -17,7 +17,7 @@ final class ThreadCountToRanges implements BiFunction<Long, List<ThreadGroupPoin
 
   @Override
   public List<ThreadRange> apply(final Long threadCount, final List<ThreadGroupPoint> threadGroupPoints) {
-    final ImmutableList.Builder<ThreadRange> rangesBuilder = new ImmutableList.Builder<>();
+    final List<ThreadRange> ranges = new ArrayList<>();
     ThreadGroupPoint last = threadGroupPoints.isEmpty() ? new ThreadGroupPoint(0L, 0L) : threadGroupPoints.get(0);
     Optional<Long> start = last.getThreadsCount() >= threadCount ? Optional.of(last.getTimeInMs()) : Optional.empty();
 
@@ -26,17 +26,17 @@ final class ThreadCountToRanges implements BiFunction<Long, List<ThreadGroupPoin
         start = Optional.of(computeTime(threadCount, last, point));
       }
       if (start.isPresent() && point.getThreadsCount() < threadCount) {
-        rangesBuilder.add(new ThreadRange(start.get(), computeTime(threadCount, last, point)));
+        ranges.add(new ThreadRange(start.get(), computeTime(threadCount, last, point)));
         start = Optional.empty();
       }
       last = point;
     }
 
     if (start.isPresent()) {
-      rangesBuilder.add(new ThreadRange(start.get(), threadGroupPoints.get(threadGroupPoints.size() - 1).getTimeInMs()));
+      ranges.add(new ThreadRange(start.get(), threadGroupPoints.get(threadGroupPoints.size() - 1).getTimeInMs()));
     }
 
-    return rangesBuilder.build();
+    return ranges;
   }
 
 

@@ -4,12 +4,14 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.*;
+import java.awt.GridLayout;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import static java.util.Objects.requireNonNull;
 
 /**
  * Contains add/delete point buttons. Handle the enabled state of the delete button depending on the table selection.
@@ -27,7 +29,7 @@ public class ButtonsPanel implements ListSelectionListener {
 
   ButtonsPanel(final JTable table, final ThreadGroupPointTableModel tableModel) {
     panel = new JPanel();
-    this.table = checkNotNull(table);
+    this.table = requireNonNull(table);
     panel.setLayout(new GridLayout(1, 2));
 
     final JButton addPointButton = new JButton();

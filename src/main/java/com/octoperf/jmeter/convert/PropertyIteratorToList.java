@@ -1,9 +1,9 @@
 package com.octoperf.jmeter.convert;
 
-import com.google.common.collect.ImmutableList;
 import org.apache.jmeter.testelement.property.JMeterProperty;
 import org.apache.jmeter.testelement.property.PropertyIterator;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
@@ -16,11 +16,11 @@ final class PropertyIteratorToList implements Function<PropertyIterator, List<JM
 
   @Override
   public List<JMeterProperty> apply(final PropertyIterator propertyIterator) {
-    final ImmutableList.Builder<JMeterProperty> listBuilder = ImmutableList.builder();
+    final List<JMeterProperty> list = new ArrayList<>();
     while (propertyIterator.hasNext()) {
-      listBuilder.add(propertyIterator.next());
+      list.add(propertyIterator.next());
     }
-    return listBuilder.build();
+    return list;
   }
 
 }

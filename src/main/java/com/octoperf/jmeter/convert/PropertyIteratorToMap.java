@@ -1,9 +1,9 @@
 package com.octoperf.jmeter.convert;
 
-import com.google.common.collect.ImmutableMap;
 import org.apache.jmeter.testelement.property.JMeterProperty;
 import org.apache.jmeter.testelement.property.PropertyIterator;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -16,12 +16,12 @@ final class PropertyIteratorToMap implements Function<PropertyIterator, Map<Stri
 
   @Override
   public Map<String, JMeterProperty> apply(final PropertyIterator propertyIterator) {
-    final ImmutableMap.Builder<String, JMeterProperty> mapBuilder = ImmutableMap.builder();
+    final Map<String, JMeterProperty> mapBuilder = new LinkedHashMap<>();
     while (propertyIterator.hasNext()) {
       final JMeterProperty property = propertyIterator.next();
       mapBuilder.put(property.getName(), property);
     }
-    return mapBuilder.build();
+    return mapBuilder;
   }
 
 }
